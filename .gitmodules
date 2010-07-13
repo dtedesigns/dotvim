@@ -40,3 +40,6 @@
 [submodule ".vim/bundle/easytags"]
 	path = .vim/bundle/easytags
 	url = http://github.com/xolox/vim-easytags.git
+[submodule ".vim/bundle/checksyntax_vim"]
+	path = .vim/bundle/checksyntax_vim
+	url = http://github.com/tomtom/checksyntax_vim.git
