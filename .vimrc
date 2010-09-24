@@ -9,8 +9,10 @@
 " }
 
 " Setup Bundle Support {
-" The next two lines ensure that the ~/.vim/bundle/ system works
+" The next lines ensure that the ~/.vim/bundle/ system works
+	filetype off
 	runtime! autoload/pathogen.vim
+	silent! call pathogen#helptags()
 	silent! call pathogen#runtime_append_all_bundles()
 " }
 
@@ -46,8 +48,13 @@
 	" }
 " }
 
+" Programming {
+	set makeprg=$HOME/bin/vimAntAndroid
+" }
+
 " Vim UI {
-	color ir_black     	       		" load a colorscheme
+	"color ir_black     	       		" load a colorscheme
+	color desert
 	set tabpagemax=15 				" only show 15 tabs
 	set showmode                   	" display the current mode
 
@@ -85,6 +92,7 @@
 	set scrolloff=3 				" minimum lines to keep above and below cursor
 	set foldenable  				" auto fold code
 	set gdefault					" the /g flag on :s substitutions by default
+	set switchbuf=usetab			" when opening a buffer from the list, use existing window first
 
 " }
 
@@ -205,7 +213,7 @@
 	" }
 
 	" EasyTags {
-		let g:easytags_cmd = '/usr/local/bin/ctags'
+		let g:easytags_cmd = '/usr/bin/ctags'
 	" }
 
 	" Delimitmate {
@@ -222,9 +230,17 @@
 
 	" SnipMate {
 		" Setting the author var
-		let g:snips_author = 'Steve Francia <steve.francia@gmail.com>'
+		let g:snips_author = 'Kevin Gustavson <kgust@pobox.com>'
 		" Shortcut for reloading snippets, useful when developing
 		nnoremap ,smr <esc>:exec ReloadAllSnippets()<cr>
+	" }
+
+	" Eclim {
+		let g:SuperTabDefaultCompletionTypeDiscovery = [
+		\ "&completefunc:<c-x><c-u>",
+		\ "&omnifunc:<c-x><c-o>",
+		\ ]
+		let g:SuperTabLongestHighlight = 1
 	" }
 " }
 
@@ -233,6 +249,7 @@
 	if has('gui_running')
 		set guioptions-=T          	" remove the toolbar
 		set lines=40               	" 40 lines of text instead of 24,
+		set guifont=Droid\ Sans\ Mono\ 10
 	endif
 " }
 
