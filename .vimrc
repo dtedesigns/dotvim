@@ -119,18 +119,33 @@
 	map <S-L> gt
 
 	" Stupid shift key fixes
-	cmap W w 						
-	cmap WQ wq
-	cmap wQ wq
-	cmap Q q
-	cmap Tabe tabe
+	"cmap W w 						
+	"cmap WQ wq
+	"cmap wQ wq
+	"cmap Q q
+	"cmap Tabe tabe
 
 	" Yank from the cursor to the end of the line, to be consistent with C and D.
 	nnoremap Y y$
 
+	" clear highlighted seaches
+	"nmap <silent> ,/ :nohlsearch<CR>
+	nnoremap <esc> :noh<return><esc>
+
+	" Shortcut mappings
+	nnoremap ; :
+	vmap Q gq
+	nmap Q gqap
+
 	" Shortcuts
 	" Change Working Directory to that of the current file
     cmap cwd lcd %:p:h
+
+	" Quickly enter paste mode
+	set pastetoggle=<F2>
+
+	" Save a write protected file when you forgot sudo
+	cmap w!! w !sudo tee % >/dev/null
 " }
 
 " Plugins {
