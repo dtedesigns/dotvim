@@ -49,7 +49,7 @@ git push origin master
 
       
 ## Importing a Subversion Repo?
-Click here http://github.com/dtedesigns/dotvim/imports/new
+[Click here](http://github.com/dtedesigns/dotvim/imports/new)
       
 ## When you're done:
 Continue [http://github.com/dtedesigns/dotvim](http://github.com/dtedesigns/dotvim)
