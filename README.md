@@ -3,7 +3,7 @@
 
 ## Global configuration
 * git config --global user.name "Your Name"
-* git config --global user.email kgust@pobox.com
+* git config --global user.email username@domain.com
         
 ## Syncronizing Vim Files with Git
 * cd ~
