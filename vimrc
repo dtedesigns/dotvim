@@ -15,6 +15,27 @@
 	silent! call pathogen#helptags()
 	silent! call pathogen#runtime_append_all_bundles()
 " }
+" Bundle List
+" BUNDLE: http://github.com/vim-scripts/HTML-AutoCloseTag.git
+" B UNDLE: checksyntax
+" BUNDLE: http://github.com/vim-scripts/Color-Sampler-Pack.git
+" BUNDLE: http://github.com/vim-scripts/Command-T.git
+" BUNDLE: http://github.com/vim-scripts/delimitMate.vim.git
+" BUNDLE: http://github.com/vim-scripts/easytags.vim.git
+" B UNDLE: eclim
+" BUNDLE: http://github.com/vim-scripts/fugitive.vim.git
+" B UNDLE: htmlcss
+" BUNDLE: http://github.com/vim-scripts/matchit.zip.git
+" BUNDLE: http://github.com/vim-scripts/The-NERD-Commenter.git
+" BUNDLE: http://github.com/vim-scripts/The-NERD-tree.git
+" BUNDLE: http://github.com/vim-scripts/PIV.git
+" BUNDLE: http://github.com/vim-scripts/snipMate.git
+" B UNDLE: snipmate-snippets
+" B UNDLE: spf13-vim-colors
+" BUNDLE: http://github.com/ervandew/supertab.git
+" BUNDLE: http://github.com/vim-scripts/surround.vim.git
+" BUNDLE: http://github.com/tpope/vim-markdown.git
+" BUNDLE: http://github.com/vim-scripts/ZenCoding.vim.git
 
 " Basics {
 	set nocompatible 		" must be first line
@@ -130,7 +151,8 @@
 
 	" clear highlighted seaches
 	"nmap <silent> ,/ :nohlsearch<CR>
-	nnoremap <esc> :noh<return><esc>
+	"nnoremap <esc> :noh<return><esc>
+	nnoremap <CR> :noh<CR><CR>
 
 	" Shortcut mappings
 	nnoremap ; :
