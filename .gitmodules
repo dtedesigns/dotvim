@@ -43,3 +43,45 @@
 [submodule ".vim/bundle/checksyntax_vim"]
 	path = .vim/bundle/checksyntax_vim
 	url = http://github.com/tomtom/checksyntax_vim.git
+[submodule "bundle/autoclosetag"]
+	path = bundle/autoclosetag
+	url = http://github.com/vim-scripts/HTML-AutoCloseTag.git
+[submodule "bundle/colorsamplerpack"]
+	path = bundle/colorsamplerpack
+	url = http://github.com/vim-scripts/Color-Sampler-Pack.git
+[submodule "bundle/command-t"]
+	path = bundle/command-t
+	url = http://github.com/vim-scripts/Command-T.git
+[submodule "bundle/delimitmate"]
+	path = bundle/delimitmate
+	url = http://github.com/vim-scripts/delimitMate.vim.git
+[submodule "bundle/easytags"]
+	path = bundle/easytags
+	url = http://github.com/vim-scripts/easytags.vim.git
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = http://github.com/vim-scripts/fugitive.vim.git
+[submodule "bundle/matchit"]
+	path = bundle/matchit
+	url = http://github.com/vim-scripts/matchit.zip.git
+[submodule "bundle/nerd-commenter"]
+	path = bundle/nerd-commenter
+	url = http://github.com/vim-scripts/The-NERD-Commenter.git
+[submodule "bundle/piv"]
+	path = bundle/piv
+	url = http://github.com/vim-scripts/PIV.git
+[submodule "bundle/snipmate"]
+	path = bundle/snipmate
+	url = http://github.com/vim-scripts/snipMate.git
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = http://github.com/ervandew/supertab.git
+[submodule "bundle/surround"]
+	path = bundle/surround
+	url = http://github.com/vim-scripts/surround.vim.git
+[submodule "bundle/markdown"]
+	path = bundle/markdown
+	url = http://github.com/tpope/vim-markdown.git
+[submodule "bundle/zencoding"]
+	path = bundle/zencoding
+	url = http://github.com/vim-scripts/ZenCoding.vim.git
