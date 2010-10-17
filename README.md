@@ -1,8 +1,7 @@
 # dotVim Configuration Files
 
 
-## Global setup
-Download and install Git
+## Global configuration
 * git config --global user.name "Your Name"
 * git config --global user.email kgust@pobox.com
         
