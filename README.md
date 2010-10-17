@@ -7,7 +7,7 @@ git config --global user.name "Your Name"
 git config --global user.email username@domain.com
 
         
-## Syncronizing Vim Files with Git
+## Synchronizing Vim Files with Git
 cd ~
 
 git clone dotvim.git ~/.vim
