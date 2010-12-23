@@ -12,30 +12,10 @@
 " The next lines ensure that the ~/.vim/bundle/ system works
 	filetype off
 	runtime! autoload/pathogen.vim
-	silent! call pathogen#helptags()
 	silent! call pathogen#runtime_append_all_bundles()
+	silent! call pathogen#helptags()
 " }
-" Bundle List
-" BUNDLE: http://github.com/vim-scripts/HTML-AutoCloseTag.git
-" B UNDLE: checksyntax
-" BUNDLE: http://github.com/vim-scripts/Color-Sampler-Pack.git
-" BUNDLE: http://github.com/vim-scripts/Command-T.git
-" BUNDLE: http://github.com/vim-scripts/delimitMate.vim.git
-" BUNDLE: http://github.com/vim-scripts/easytags.vim.git
-" B UNDLE: eclim
-" BUNDLE: http://github.com/vim-scripts/fugitive.vim.git
-" B UNDLE: htmlcss
-" BUNDLE: http://github.com/vim-scripts/matchit.zip.git
-" BUNDLE: http://github.com/vim-scripts/The-NERD-Commenter.git
-" BUNDLE: http://github.com/vim-scripts/The-NERD-tree.git
-" BUNDLE: http://github.com/vim-scripts/PIV.git
-" BUNDLE: http://github.com/vim-scripts/snipMate.git
-" B UNDLE: snipmate-snippets
-" B UNDLE: spf13-vim-colors
-" BUNDLE: http://github.com/ervandew/supertab.git
-" BUNDLE: http://github.com/vim-scripts/surround.vim.git
-" BUNDLE: http://github.com/tpope/vim-markdown.git
-" BUNDLE: http://github.com/vim-scripts/ZenCoding.vim.git
+
 
 " Basics {
 	set nocompatible 		" must be first line
@@ -71,6 +51,23 @@
 
 " Programming {
 	set makeprg=$HOME/bin/vimAntAndroid
+	"set keywordprg=$HOME/bin/php_doc
+
+	function! OpenPhpFunction (keyword)
+	  let proc_keyword = substitute(a:keyword , '_', '-', 'g')
+	  exe 'split'
+	  exe 'enew'
+	  exe "set buftype=nofile"
+	  exe 'silent r!lynx -dump -nolist http://www.php.net/manual/en/print/function.'.proc_keyword.'.php'
+			"exe 'silent r!lynx -dump -nolist http://php.net/'.proc_keyword
+	  exe 'norm gg'
+	  exe 'call search ("' . a:keyword .'")'
+	  exe 'norm dgg'
+	  exe 'call search("User Contributed Notes")'
+	  exe 'norm dGgg'
+	endfunction
+	au FileType php map K :call OpenPhpFunction('<C-r><C-w>')<CR>
+
 " }
 
 " Vim UI {
@@ -121,7 +118,7 @@
 	set nowrap                     	" wrap long lines
 	set autoindent                 	" indent at the same level of the previous line
 	set shiftwidth=4               	" use indents of 4 spaces
-	set noexpandtab 	       		" tabs are tabs, not spaces
+	set noexpandtab					" tabs are tabs, not spaces
 	set tabstop=4 					" an indentation every four columns
 	"set matchpairs+=<:>            	" match, to be used with % 
 	set pastetoggle=<F12>          	" pastetoggle (sane indentation on pastes)
@@ -154,6 +151,12 @@
 	"nnoremap <esc> :noh<return><esc>
 	nnoremap <CR> :noh<CR><CR>
 
+	" Buffers and Tabs
+	map <Up> :bprev<CR>
+	map <Down> :bnext<CR>
+	map <Left> :tabprev<CR>
+	map <Right> :tabnext<CR>
+
 	" Shortcut mappings
 	nnoremap ; :
 	vmap Q gq
@@ -183,7 +186,7 @@
 	" }
 	
 	" Supertab {
-		"let g:SuperTabDefaultCompletionType = "context"
+		let g:SuperTabDefaultCompletionType = "context"
 		let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 	" }
 
@@ -272,12 +275,19 @@
 		nnoremap ,smr <esc>:exec ReloadAllSnippets()<cr>
 	" }
 
-	" Eclim {
-		let g:SuperTabDefaultCompletionTypeDiscovery = [
-		\ "&completefunc:<c-x><c-u>",
-		\ "&omnifunc:<c-x><c-o>",
-		\ ]
-		let g:SuperTabLongestHighlight = 1
+	" ZenCoding {
+		let g:user_zen_settings = {
+		\	'php' : {
+		\		'extends' : 'html',
+		\		'filters' : 'c',
+		\	},
+		\	'xml' : {
+		\		'extends' : 'html',
+		\	},
+		\	'haml' : {
+		\		'extends' : 'html',
+		\	},
+		\}
 	" }
 " }
 
