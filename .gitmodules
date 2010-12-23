@@ -27,7 +27,7 @@
 	url = http://github.com/vim-scripts/PIV.git
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
-	url = http://github.com/vim-scripts/snipMate.git
+	url = https://github.com/weierophinney/snipmate.vim.git
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = http://github.com/ervandew/supertab.git
