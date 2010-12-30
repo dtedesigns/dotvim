@@ -16,7 +16,6 @@
 	silent! call pathogen#helptags()
 " }
 
-
 " Basics {
 	set nocompatible 		" must be first line
 	set background=dark     " Assume a dark background
@@ -33,6 +32,7 @@
 	set autowrite
 	set shortmess+=filmnrxoOtT     	" abbrev. of messages (avoids 'hit enter')
 	" set spell 		 	     	" spell checking on
+	set hidden					" Turn on hidden mode
 	
 	" Setting up the directories {
 		set backup 						" backups are nice ...
