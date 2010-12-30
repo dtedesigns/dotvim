@@ -55,3 +55,6 @@
 [submodule "bundle/proj-vim"]
 	path = bundle/proj-vim
 	url = https://github.com/tmallen/proj-vim.git
+[submodule "bundle/surround"]
+	path = bundle/surround
+	url = https://github.com/tpope/vim-surround.git
