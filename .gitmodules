@@ -64,3 +64,24 @@
 [submodule "bundle/lusty"]
 	path = bundle/lusty
 	url = https://github.com/sjbach/lusty.git
+[submodule "bundle/yaifa"]
+	path = bundle/yaifa
+	url = https://github.com/Raimondi/YAIFA.git
+[submodule "bundle/checksyntax"]
+	path = bundle/checksyntax
+	url = https://github.com/tomtom/checksyntax_vim.git
+[submodule "bundle/IndentConsistencyCop"]
+	path = bundle/IndentConsistencyCop
+	url = https://github.com/vim-scripts/IndentConsistencyCop.git
+[submodule "bundle/IndentConsistencyCopAutoCmds"]
+	path = bundle/IndentConsistencyCopAutoCmds
+	url = https://github.com/vim-scripts/IndentConsistencyCopAutoCmds.git
+[submodule "bundle/align"]
+	path = bundle/align
+	url = https://github.com/tsaleh/vim-align.git
+[submodule "bundle/taglist"]
+	path = bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim.git
+[submodule "bundle/bufexplorer"]
+	path = bundle/bufexplorer
+	url = https://github.com/slack/vim-bufexplorer.git

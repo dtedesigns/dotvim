@@ -20,14 +20,14 @@
 	set nocompatible 		" must be first line
 	set background=dark     " Assume a dark background
 " }
- 
+
 " General {
 	filetype plugin indent on  	" Automatically detect file types.
 	syntax on 					" syntax highlighting
 	set mouse=a					" automatically enable mouse usage
 	"set autochdir 				" always switch to the current file directory.. 
 	" not every vim is compiled with this, use the following line instead
-     "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+	"autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 	scriptencoding utf-8
 	set autowrite
 	set shortmess+=filmnrxoOtT     	" abbrev. of messages (avoids 'hit enter')
@@ -50,23 +50,29 @@
 " }
 
 " Programming {
-	set makeprg=$HOME/bin/vimAntAndroid
+	"set makeprg=$HOME/bin/vimAntAndroid
 	"set keywordprg=$HOME/bin/php_doc
 
 	function! OpenPhpFunction (keyword)
-	  let proc_keyword = substitute(a:keyword , '_', '-', 'g')
-	  exe 'split'
-	  exe 'enew'
-	  exe "set buftype=nofile"
-	  exe 'silent r!lynx -dump -nolist http://www.php.net/manual/en/print/function.'.proc_keyword.'.php'
+		let proc_keyword = substitute(a:keyword , '_', '-', 'g')
+		exe 'split'
+		exe 'enew'
+		exe "set buftype=nofile"
+		exe 'silent r!lynx -dump -nolist http://www.php.net/manual/en/print/function.'.proc_keyword.'.php'
 			"exe 'silent r!lynx -dump -nolist http://php.net/'.proc_keyword
-	  exe 'norm gg'
-	  exe 'call search ("' . a:keyword .'")'
-	  exe 'norm dgg'
-	  exe 'call search("User Contributed Notes")'
-	  exe 'norm dGgg'
+		exe 'norm gg'
+		exe 'call search ("' . a:keyword .'")'
+		exe 'norm dgg'
+		exe 'call search("User Contributed Notes")'
+		exe 'norm dGgg'
 	endfunction
 	au FileType php map K :call OpenPhpFunction('<C-r><C-w>')<CR>
+
+	" Turn on JavaScript folding
+	"let b:javascript_fold=1
+	"set foldmethod=syntax
+
+	au FileType tex set makeprg=pdflatex\ %<.tex
 
 " }
 
@@ -158,13 +164,13 @@
 	map <Right> :tabnext<CR>
 
 	" Shortcut mappings
-	nnoremap ; :
+	"nnoremap ; :
 	vmap Q gq
 	nmap Q gqap
 
 	" Shortcuts
 	" Change Working Directory to that of the current file
-    cmap cwd lcd %:p:h
+	cmap cwd lcd %:p:h
 
 	" Quickly enter paste mode
 	set pastetoggle=<F2>
@@ -260,7 +266,7 @@
 		au FileType * let b:delimitMate_autoclose = 1
 
 		" If using html auto complete (complete closing tag)
-        au FileType xml,html,xhtml let b:delimitMate_matchpairs = "(:),[:],{:}"
+		au FileType xml,html,xhtml let b:delimitMate_matchpairs = "(:),[:],{:}"
 	" }
 	
 	" AutoCloseTag {
@@ -289,6 +295,10 @@
 		\	},
 		\}
 	" }
+
+	" AlignMaps {
+		let g:DrChipTopLvlMenu= "Plugin."
+	" }
 " }
 
 " GUI Settings {
@@ -304,6 +314,6 @@
 	" On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
 	" across (heterogeneous) systems easier. 
 	if has('win32') || has('win64')
-	  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+		set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 	endif
 " }
