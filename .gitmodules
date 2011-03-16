@@ -61,9 +61,6 @@
 [submodule "bundle/mru"]
 	path = bundle/mru
 	url = https://github.com/vim-scripts/mru.vim.git
-[submodule "bundle/lusty"]
-	path = bundle/lusty
-	url = https://github.com/sjbach/lusty.git
 [submodule "bundle/yaifa"]
 	path = bundle/yaifa
 	url = https://github.com/Raimondi/YAIFA.git
@@ -85,3 +82,6 @@
 [submodule "bundle/bufexplorer"]
 	path = bundle/bufexplorer
 	url = https://github.com/slack/vim-bufexplorer.git
+[submodule "bundle/parameter-text-objects"]
+	path = bundle/Parameter-Text-Objects
+	url = https://github.com/vim-scripts/Parameter-Text-Objects.git
