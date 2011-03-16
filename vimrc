@@ -21,6 +21,12 @@
 	set background=dark     " Assume a dark background
 " }
 
+" Debian/Ubuntu {
+	" This line should not be removed as it ensures that various options are
+	" properly set to work with the Vim-related packages available in Debian.
+	 "runtime! debian.vim
+" }
+
 " General {
 	filetype plugin indent on  	" Automatically detect file types.
 	syntax on 					" syntax highlighting
@@ -96,8 +102,8 @@
 	if has('statusline')
 		set laststatus=1           	" show statusline only if there are > 1 windows
 		" Use the commented line if fugitive isn't installed
-		"set statusline=%<%f\ %=\:\b%n%y%m%r%w\ %l,%c%V\ %P " a statusline, also on steroids
-		set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+		set statusline=%<%f\ %=\:\b%n%y%m%r%w\ %l,%c%V\ %P " a statusline, also on steroids
+		"set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 	endif
 
 	set backspace=indent,eol,start 	" backspace for dummys
@@ -183,8 +189,7 @@
 
 	" VCSCommand {
 		let b:VCSCommandMapPrefix=',v'
-		let b:VCSCommandVCSType='git'
-		""let mapleader = "-"
+		"let b:VCSCommandVCSType='git'
 	" } 
 	
 	" PIV {
@@ -263,18 +268,25 @@
 	" }
 
 	" Delimitmate {
-		au FileType * let b:delimitMate_autoclose = 1
+		"au FileType * let b:delimitMate_autoclose = 1
 
 		" If using html auto complete (complete closing tag)
-		au FileType xml,html,xhtml let b:delimitMate_matchpairs = "(:),[:],{:}"
+		"au FileType xml,html,xhtml let b:delimitMate_matchpairs = "(:),[:],{:}"
 	" }
 	
 	" AutoCloseTag {
 		" Make it so AutoCloseTag works for xml and xhtml files as well
 		au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
 	" }
+	
+	" IndentConsistencyCop {
+		" Disable IndentConsistencyCop
+		let g:loaded_indentconsistencycop = 1
+	" }
 
 	" SnipMate {
+		let loaded_snips = 1 " Disable the plugin
+
 		" Setting the author var
 		let g:snips_author = 'Kevin Gustavson <kgust@pobox.com>'
 		" Shortcut for reloading snippets, useful when developing
@@ -298,6 +310,11 @@
 
 	" AlignMaps {
 		let g:DrChipTopLvlMenu= "Plugin."
+	" }
+
+	" Disabled {
+		" Disable tinymode (currently causing errors)
+		let loaded_tinymode_tml = 1
 	" }
 " }
 
