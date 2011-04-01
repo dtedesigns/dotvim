@@ -75,8 +75,8 @@
 	au FileType php map K :call OpenPhpFunction('<C-r><C-w>')<CR>
 
 	" Turn on JavaScript folding
-	"let b:javascript_fold=1
-	"set foldmethod=syntax
+	let b:javascript_fold=1
+	set foldmethod=syntax
 
 	au FileType tex set makeprg=pdflatex\ %<.tex
 
@@ -166,8 +166,8 @@
 	" Buffers and Tabs
 	map <Up> :bprev<CR>
 	map <Down> :bnext<CR>
-	map <Left> :tabprev<CR>
-	map <Right> :tabnext<CR>
+	"map <Left> :tabprev<CR>
+	"map <Right> :tabnext<CR>
 
 	" Shortcut mappings
 	"nnoremap ; :
@@ -194,6 +194,12 @@
 	
 	" PIV {
 		let g:DisableAutoPHPFolding = 0
+
+		let g:pdv_cfg_Package = "CellTrak"
+		let g:pdv_cfg_Version = "1.74"
+		let g:pdv_cfg_Author = "K. Gustavson"
+		let g:pdv_cfg_Copyright = "Copyright (c) 2011 CellTrak Technologies, Inc. All Rights reserved."
+		let g:pdv_cfg_License = "This is a CellTrak internal document. Do not duplicate or distribute."
 	" }
 	
 	" Supertab {
@@ -285,7 +291,7 @@
 	" }
 
 	" SnipMate {
-		let loaded_snips = 1 " Disable the plugin
+		"let loaded_snips = 1 " Disable the plugin
 
 		" Setting the author var
 		let g:snips_author = 'Kevin Gustavson <kgust@pobox.com>'
@@ -322,7 +328,7 @@
 	" GVIM- (here instead of .gvimrc)
 	if has('gui_running')
 		set guioptions-=T          	" remove the toolbar
-		set lines=40               	" 40 lines of text instead of 24,
+		"set lines=40               	" 40 lines of text instead of 24,
 		set guifont=Droid\ Sans\ Mono\ 10
 	endif
 " }
