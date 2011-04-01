@@ -10,9 +10,6 @@
 [submodule "bundle/matchit"]
 	path = bundle/matchit
 	url = http://github.com/vim-scripts/matchit.zip.git
-[submodule "bundle/nerd-commenter"]
-	path = bundle/nerd-commenter
-	url = http://github.com/vim-scripts/The-NERD-Commenter.git
 [submodule "bundle/piv"]
 	path = bundle/piv
 	url = https://github.com/spf13/PIV.git
@@ -28,9 +25,6 @@
 [submodule "bundle/zencoding"]
 	path = bundle/zencoding
 	url = http://github.com/vim-scripts/ZenCoding.vim.git
-[submodule "bundle/nerd-tree"]
-	path = bundle/nerd-tree
-	url = http://github.com/vim-scripts/The-NERD-tree.git
 [submodule "bundle/gtags"]
 	path = bundle/gtags
 	url = https://github.com/vim-scripts/gtags.vim.git
@@ -73,3 +67,9 @@
 [submodule "bundle/camelcasemotion"]
 	path = bundle/camelcasemotion
 	url = https://github.com/vim-scripts/camelcasemotion.git
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
