@@ -83,6 +83,10 @@
 " }
 
 " Vim UI {
+	" Fix console Vim, which was giving A B C D when using arrow keys in
+	" insert mode.
+	set term=linux
+
 	"color ir_black     	       		" load a colorscheme
 	color desert
 	set tabpagemax=15 				" only show 15 tabs
@@ -208,9 +212,6 @@
 	" }
 
 	" Misc { 
-		:map <C-F10> <Esc>:vsp<CR>:VTree<CR>
-		" map Control + F10 to Vtree
-
 		let g:checksyntax_auto = 0
 
 		"comment out line(s) in visual mode
