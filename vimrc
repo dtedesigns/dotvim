@@ -144,27 +144,17 @@
 " Key Mappings {
 
 	" Easier moving in tabs and windows
-	map <C-J> <C-W>j<C-W>_
-	map <C-K> <C-W>k<C-W>_
-	map <C-L> <C-W>l<C-W>_
-	map <C-H> <C-W>h<C-W>_
-	map <C-K> <C-W>k<C-W>_
+	map <C-H> <C-W>h
+	map <C-J> <C-W>j
+	map <C-K> <C-W>k
+	map <C-L> <C-W>l
 	map <S-H> gT
 	map <S-L> gt
-
-	" Stupid shift key fixes
-	"cmap W w 						
-	"cmap WQ wq
-	"cmap wQ wq
-	"cmap Q q
-	"cmap Tabe tabe
 
 	" Yank from the cursor to the end of the line, to be consistent with C and D.
 	nnoremap Y y$
 
 	" clear highlighted seaches
-	"nmap <silent> ,/ :nohlsearch<CR>
-	"nnoremap <esc> :noh<return><esc>
 	nnoremap <CR> :noh<CR><CR>
 
 	" Buffers and Tabs
@@ -174,7 +164,6 @@
 	"map <Right> :tabnext<CR>
 
 	" Shortcut mappings
-	"nnoremap ; :
 	vmap Q gq
 	nmap Q gqap
 
@@ -204,6 +193,7 @@
 		let g:pdv_cfg_Author = "K. Gustavson"
 		let g:pdv_cfg_Copyright = "Copyright (c) 2011 CellTrak Technologies, Inc. All Rights reserved."
 		let g:pdv_cfg_License = "This is a CellTrak internal document. Do not duplicate or distribute."
+		""let b:match_words = b:match_words . ',{:},(:),[:]'
 	" }
 	
 	" Supertab {
