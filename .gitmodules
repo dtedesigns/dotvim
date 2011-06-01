@@ -73,6 +73,21 @@
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "bundle/easytags"]
-	path = bundle/easytags
-	url = https://github.com/xolox/vim-easytags.git
+[submodule "bundle/conque"]
+	path = bundle/conque
+	url = https://github.com/rson/vim-conque.git
+[submodule "bundle/textile"]
+	path = bundle/textile
+	url = https://github.com/timcharper/textile.vim.git
+[submodule "bundle/phpunit/plugin"]
+	path = bundle/phpunit/plugin
+	url = https://github.com/klokane/vim-phpunit.git
+[submodule "bundle/ruby-debug"]
+	path = bundle/ruby-debug
+	url = https://github.com/astashov/vim-ruby-debugger.git
+[submodule "bundle/gundo"]
+	path = bundle/gundo
+	url = https://github.com/sjl/gundo.vim.git
+[submodule "bundle/rainbow-parenthesis"]
+	path = bundle/rainbow-parenthesis
+	url = https://github.com/vim-scripts/Rainbow-Parenthsis-Bundle.git
