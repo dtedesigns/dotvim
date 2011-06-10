@@ -96,7 +96,7 @@
     hi CursorColumn guibg=#333333   " highlight cursor
 
     set splitright                  " I want vertical windows to open on the right
-    set splitbelow                  " I want horizontal windows to open on the bottom
+    "set splitbelow                  " I want horizontal windows to open on the bottom
 
     if has('cmdline_info')
         set ruler                   " show the ruler
@@ -108,8 +108,8 @@
     if has('statusline')
         set laststatus=1             " show statusline only if there are > 1 windows
         " Use the commented line if fugitive isn't installed
-        set statusline=%<%f\ %=\:\b%n%y%m%r%w\ %l,%c%V\ %P " a statusline, also on steroids
-        "set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+        "set statusline=%<%f\ %=\:\b%n%y%m%r%w\ %l,%c%V\ %P " a statusline, also on steroids
+        set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
     endif
 
     set backspace=indent,eol,start   " backspace for dummys
@@ -225,25 +225,48 @@
 
 " Plugins {
 
-    " VCSCommand {
-        let b:VCSCommandMapPrefix='<Leader>v'
-        "let b:VCSCommandVCSType='git'
-    " } 
-    
-    " PIV {
-        let g:DisableAutoPHPFolding = 0
+    " AlignMaps {
+        let g:DrChipTopLvlMenu= "Plugin."
+    " }
 
-        let g:pdv_cfg_Package = "CellTrak"
-        let g:pdv_cfg_Version = "1.74"
-        let g:pdv_cfg_Author = "K. Gustavson"
-        let g:pdv_cfg_Copyright = "Copyright (c) 2011 CellTrak Technologies, Inc. All Rights reserved."
-        let g:pdv_cfg_License = "This is a CellTrak internal document. Do not duplicate or distribute."
-        ""let b:match_words = b:match_words . ',{:},(:),[:]'
+    " AutoCloseTag {
+        " Make it so AutoCloseTag works for xml and xhtml files as well
+        au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
     " }
     
-    " Supertab {
-        let g:SuperTabDefaultCompletionType = "context"
-        let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+    " Ctags {
+        set tags=./tags;/,~/.vimtags
+    " }
+
+    " Delimitmate {
+        "au FileType * let b:delimitMate_autoclose = 1
+
+        " If using html auto complete (complete closing tag)
+        "au FileType xml,html,xhtml let b:delimitMate_matchpairs = "(:),[:],{:}"
+    " }
+
+    " dbext {
+        "let g:dbext_default_profile_mysql_local_DBI = 'type=DBI:user=root:passwd=whatever:driver=mysql:conn_parms=database=mysql;host=localhost'
+        "let g:dbext_default_profile_mysql_local_ODBC = 'type=ODBC:user=root:passwd=whatever:dsnname=mysql'
+
+        let g:dbext_default_profile_local = 'type=MYSQL:user=kgustavson:passwd=kgustavson11:dbname=@askb:extra=-t'
+        let g:dbext_default_profile_local_hcr = 'type=MYSQL:user=kgustavson:passwd=kgustavson11:dbname=hcr174'
+    " }
+    
+    " EasyTags {
+        let g:easytags_cmd = '/usr/bin/ctags'
+    " }
+
+    " Gundo {
+        nnoremap <Leader>g :GundoToggle<CR>
+        "let g:gundo_width = 60
+        "let g:gundo_preview_height = 40
+        let g:gundo_right = 1
+    " }
+
+    " IndentConsistencyCop {
+        " Disable IndentConsistencyCop
+        let g:loaded_indentconsistencycop = 1
     " }
 
     " Misc { 
@@ -256,20 +279,6 @@
         let b:match_ignorecase = 1
     " }
 
-    " ShowMarks {
-        let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        " Don't leave on by default, use :ShowMarksOn to enable
-        let g:showmarks_enable = 0
-        " For marks a-z
-        highlight ShowMarksHLl gui=bold guibg=LightBlue guifg=Blue
-        " For marks A-Z
-        highlight ShowMarksHLu gui=bold guibg=LightRed guifg=DarkRed
-        " For all other marks
-        highlight ShowMarksHLo gui=bold guibg=LightYellow guifg=DarkYellow
-        " For multiple marks on the same line.
-        highlight ShowMarksHLm gui=bold guibg=LightGreen guifg=DarkGreen
-    " }
-    
     " OmniComplete {
         "if has("autocmd") && exists("+omnifunc")
             "autocmd Filetype *
@@ -300,32 +309,38 @@
         au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
         set completeopt=menu,longest,preview
     " }
-    
-    " Ctags {
-        set tags=./tags;/,~/.vimtags
-    " }
 
-    " EasyTags {
-        let g:easytags_cmd = '/usr/bin/ctags'
-    " }
+    " PIV {
+        let g:DisableAutoPHPFolding = 0
 
-    " Delimitmate {
-        "au FileType * let b:delimitMate_autoclose = 1
-
-        " If using html auto complete (complete closing tag)
-        "au FileType xml,html,xhtml let b:delimitMate_matchpairs = "(:),[:],{:}"
+        let g:pdv_cfg_Package = "CellTrak"
+        let g:pdv_cfg_Version = "1.74"
+        let g:pdv_cfg_Author = "K. Gustavson"
+        let g:pdv_cfg_Copyright = "Copyright (c) 2011 CellTrak Technologies, Inc. All Rights reserved."
+        let g:pdv_cfg_License = "This is a CellTrak internal document. Do not duplicate or distribute."
+        ""let b:match_words = b:match_words . ',{:},(:),[:]'
     " }
     
-    " AutoCloseTag {
-        " Make it so AutoCloseTag works for xml and xhtml files as well
-        au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
-    " }
-    
-    " IndentConsistencyCop {
-        " Disable IndentConsistencyCop
-        let g:loaded_indentconsistencycop = 1
+    " Scratch {
+        nnoremap <Leader>sc :ToggleScratch<CR>
+        nnoremap <Leader>ss :Sscratch<CR>
+        nnoremap <Leader>as :AddtoScratch<CR>
     " }
 
+    " ShowMarks {
+        let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        " Don't leave on by default, use :ShowMarksOn to enable
+        let g:showmarks_enable = 0
+        " For marks a-z
+        highlight ShowMarksHLl gui=bold guibg=LightBlue guifg=Blue
+        " For marks A-Z
+        highlight ShowMarksHLu gui=bold guibg=LightRed guifg=DarkRed
+        " For all other marks
+        highlight ShowMarksHLo gui=bold guibg=LightYellow guifg=DarkYellow
+        " For multiple marks on the same line.
+        highlight ShowMarksHLm gui=bold guibg=LightGreen guifg=DarkGreen
+    " }
+    
     " SnipMate {
         "let loaded_snips = 1 " Disable the plugin
 
@@ -334,6 +349,26 @@
         " Shortcut for reloading snippets, useful when developing
         nnoremap ,smr <esc>:exec ReloadAllSnippets()<cr>
     " }
+
+    " Supertab {
+        let g:SuperTabDefaultCompletionType = "context"
+        let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+    " }
+
+    " VCSCommand {
+        let b:VCSCommandMapPrefix='<Leader>v'
+        "let b:VCSCommandVCSType='git'
+    " } 
+    
+    " VimDebugger {
+        map <F8> :DbgToggleBreakpoint<CR>
+        map <S-F8> :DbgAddWatch<CR>
+        map <F9> :DbgRun<CR>
+        map <S-F9> :DbgDetach<CR>
+        map <F10> :DbgStepOver<CR>
+        map <F11> :DbgStepInto<CR>
+        map <S-F11> :DbgStepOut<CR>
+    " } 
 
     " ZenCoding {
         let g:user_zen_settings = {
@@ -350,28 +385,23 @@
         \}
     " }
 
-    " AlignMaps {
-        let g:DrChipTopLvlMenu= "Plugin."
-    " }
-
-    " Gundo {
-        nnoremap <Leader>g :GundoToggle<CR>
-    " }
-
     " Disabled {
         " Disable tinymode (currently causing errors)
         let loaded_tinymode_tml = 1
     " }
+
 " }
 
 " GUI Settings {
     " GVIM- (here instead of .gvimrc)
     if has('gui_running')
         set guioptions-=T              " remove the toolbar
-        set lines=40                   " 40 lines of text instead of 24,
+        "set lines=40                   " 40 lines of text instead of 24,
         "set guifont=Droid\ Sans\ Mono\ 9
         set guifont=Monospace\ 9
-        color desert
+        set background=light     " Assume a light background
+        "color desert
+        colorscheme solarized
     endif
 " }
 

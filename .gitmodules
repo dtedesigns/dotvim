@@ -91,3 +91,21 @@
 [submodule "bundle/rainbow-parenthesis"]
 	path = bundle/rainbow-parenthesis
 	url = https://github.com/vim-scripts/Rainbow-Parenthsis-Bundle.git
+[submodule "bundle/dbext"]
+	path = bundle/dbext
+	url = https://github.com/vim-scripts/dbext.vim.git
+[submodule "bundle/scratch"]
+	path = bundle/scratch
+	url = https://github.com/vim-scripts/scratch.vim--Who.git
+[submodule "bundle/quicksilver"]
+	path = bundle/quicksilver
+	url = https://github.com/Bogdanp/quicksilver.vim.git
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "bundle/colorscheme-solarized"]
+	path = bundle/colorscheme-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "bundle/VimDebugger"]
+	path = bundle/VimDebugger
+	url = https://github.com/taxilian/VimDebugger.git
