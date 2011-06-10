@@ -249,8 +249,8 @@
         "let g:dbext_default_profile_mysql_local_DBI = 'type=DBI:user=root:passwd=whatever:driver=mysql:conn_parms=database=mysql;host=localhost'
         "let g:dbext_default_profile_mysql_local_ODBC = 'type=ODBC:user=root:passwd=whatever:dsnname=mysql'
 
-        let g:dbext_default_profile_local = 'type=MYSQL:user=kgustavson:passwd=kgustavson11:dbname=@askb:extra=-t'
-        let g:dbext_default_profile_local_hcr = 'type=MYSQL:user=kgustavson:passwd=kgustavson11:dbname=hcr174'
+        let g:dbext_default_profile_local = 'type=MYSQL:user=kgustavson:passwd=@askb:dbname=@askb:extra=-t'
+        let g:dbext_default_profile_local_hcr = 'type=MYSQL:user=kgustavson:passwd=@askb:dbname=hcr174'
     " }
     
     " EasyTags {
