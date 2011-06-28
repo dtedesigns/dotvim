@@ -251,6 +251,7 @@
 
         let g:dbext_default_profile_local = 'type=MYSQL:user=kgustavson:passwd=@askb:dbname=@askb:extra=-t'
         let g:dbext_default_profile_local_hcr = 'type=MYSQL:user=kgustavson:passwd=@askb:dbname=hcr174'
+        let g:dbext_default_profile_ctidb = 'type=MYSQL:host=ctidb.ctigps.net:user=kgustavson:passwd=@askb:dbname=@askb'
     " }
     
     " EasyTags {
@@ -398,7 +399,8 @@
         set guioptions-=T              " remove the toolbar
         "set lines=40                   " 40 lines of text instead of 24,
         "set guifont=Droid\ Sans\ Mono\ 9
-        set guifont=Monospace\ 9
+        "set guifont=Monospace\ 9
+        set guifont=Inconsolata\ 10
         set background=light     " Assume a light background
         "color desert
         colorscheme solarized
