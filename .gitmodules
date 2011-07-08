@@ -3,7 +3,7 @@
 	url = http://github.com/vim-scripts/HTML-AutoCloseTag.git
 [submodule "bundle/colorsamplerpack"]
 	path = bundle/colorsamplerpack
-	url = http://github.com/vim-scripts/Color-Sampler-Pack.git
+	url = https://github.com/vim-scripts/Color-Sampler-Pack.git
 [submodule "bundle/command-t"]
 	path = bundle/command-t
 	url = http://github.com/vim-scripts/Command-T.git

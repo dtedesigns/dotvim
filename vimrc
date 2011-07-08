@@ -87,7 +87,7 @@
     " insert mode.
     set term=linux
 
-    color desert256
+    "color desert256
     set tabpagemax=15               " only show 15 tabs
     set showmode                    " display the current mode
 
@@ -187,8 +187,8 @@
     "imap jj <Esc>
 
     " Use regular regexp for searches
-    nnoremap / /\v
-    vnoremap / /\v
+    "nnoremap / /\v
+    "vnoremap / /\v
 
     " Make tab key bounce between matches like '%'
     nnoremap <tab> %
@@ -363,12 +363,12 @@
     
     " VimDebugger {
         map <F8> :DbgToggleBreakpoint<CR>
-        map <S-F8> :DbgAddWatch<CR>
+        map <F7> :DbgRefreshWatch<CR>
         map <F9> :DbgRun<CR>
         map <S-F9> :DbgDetach<CR>
-        map <F10> :DbgStepOver<CR>
-        map <F11> :DbgStepInto<CR>
-        map <S-F11> :DbgStepOut<CR>
+        map <F10> :DbgStepOver<CR>:DbgRefreshWatch<CR>
+        map <F11> :DbgStepInto<CR>:DbgRefreshWatch<CR>
+        map <S-F11> :DbgStepOut<CR>:DbgRefreshWatch<CR>
     " } 
 
     " ZenCoding {
