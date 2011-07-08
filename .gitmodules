@@ -109,3 +109,9 @@
 [submodule "bundle/VimDebugger"]
 	path = bundle/VimDebugger
 	url = https://github.com/taxilian/VimDebugger.git
+[submodule "bundle/snipmate-snippets"]
+	path = bundle/snipmate-snippets
+	url = https://github.com/vim-addons/snipmate-snippets.git
+[submodule "bundle/vim-json"]
+	path = bundle/vim-json
+	url = https://github.com/chrismetcalf/vim-json.git
