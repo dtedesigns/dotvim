@@ -79,6 +79,7 @@
     let b:javascript_fold=1
 
     au FileType tex set makeprg=pdflatex\ %<.tex
+    au FileType php set makeprg=$HOME/bin/ctags-php.sh
 
 " }
 
