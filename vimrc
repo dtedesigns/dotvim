@@ -13,7 +13,6 @@
 
 " Basics {
     set nocompatible         " must be first line
-    set background=dark     " Assume a dark background
 " }
 
 " Debian/Ubuntu {
@@ -26,7 +25,7 @@
     filetype plugin indent on      " Automatically detect file types.
     syntax on                      " syntax highlighting
     set mouse=a                    " automatically enable mouse usage
-    "set autochdir                 " always switch to the current file directory.. 
+    "set autochdir                 " always switch to the current file directory..
     " not every vim is compiled with this, use the following line instead
     "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
     scriptencoding utf-8
@@ -38,14 +37,14 @@
 
     " Save on focus lost
     "au FocusLost * :wa
-    
+
     " Setting up the directories {
         set backup                         " backups are nice ...
         set backupdir=$HOME/.vimbackup     " but not when they clog .
         set directory=$HOME/.vimswap       " Same for swap files
         set viewdir=$HOME/.vimviews        " same for view files
         set undodir=$HOME/.vimundo         " same for undo files
-        
+
         " Creating directories if they don't exist
         silent execute '!mkdir -p $HOME/.vimbackup'
         silent execute '!mkdir -p $HOME/.vimswap'
@@ -81,6 +80,10 @@
     au FileType tex set makeprg=pdflatex\ %<.tex
     au FileType php set makeprg=$HOME/bin/ctags-php.sh
 
+    au FileType php set omnifunc=phpcomplete#CompletePHP
+    let php_sql_query=1
+    let php_htmlInStrings=1
+
 " }
 
 " Vim UI {
@@ -107,7 +110,7 @@
     endif
 
     if has('statusline')
-        set laststatus=1             " show statusline only if there are > 1 windows
+        set laststatus=2             " show statusline always
         " Use the commented line if fugitive isn't installed
         "set statusline=%<%f\ %=\:\b%n%y%m%r%w\ %l,%c%V\ %P " a statusline, also on steroids
         set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
@@ -115,12 +118,12 @@
 
     set backspace=indent,eol,start   " backspace for dummys
     set linespace=0                  " No extra spaces between rows
-    "set number                       " Line numbers on
-    set relativenumber              " Turn on relative number mode
+    set number                       " Line numbers on
+    "set relativenumber              " Turn on relative number mode
     set showmatch                    " show matching brackets/parenthesis
     set incsearch                    " find as you type search
     set hlsearch                     " highlight search terms
-    set winminheight=0               " windows can be 0 line high 
+    set winminheight=0               " windows can be 0 line high
     set ignorecase                   " case insensitive search
     set smartcase                    " case sensitive when uc present
     set wildmenu                     " show list instead of just completing
@@ -133,6 +136,11 @@
     set switchbuf=usetab             " when opening a buffer from the list, use existing window first
     set colorcolumn=85               " visible wrap here/long line indicator
 
+    " u+2294 ⊔  u+231f ⌟  u+00bb »  u+2422 ␢  u+27ab ➫  u+2022 •  u+2027 ‧
+    " u+2056 ⁖
+    set list
+    set listchars=trail:⁖,nbsp:⊔,tab:➫•
+
 " }
 
 " Formatting {
@@ -141,7 +149,7 @@
     set shiftwidth=4                 " use indents of 4 spaces
     set expandtab                    " tabs are tabs, not spaces
     set tabstop=4                    " an indentation every four columns
-    "set matchpairs+=<:>             " match, to be used with % 
+    "set matchpairs+=<:>             " match, to be used with %
     set pastetoggle=<F12>            " pastetoggle (sane indentation on pastes)
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     "set foldmethod=syntax
@@ -234,7 +242,7 @@
         " Make it so AutoCloseTag works for xml and xhtml files as well
         au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
     " }
-    
+
     " Ctags {
         set tags=./tags;/,~/.vimtags
     " }
@@ -254,7 +262,7 @@
         let g:dbext_default_profile_local_hcr = 'type=MYSQL:user=kgustavson:passwd=@askb:dbname=hcr174'
         let g:dbext_default_profile_ctidb = 'type=MYSQL:host=ctidb.ctigps.net:user=kgustavson:passwd=@askb:dbname=@askb'
     " }
-    
+
     " EasyTags {
         let g:easytags_cmd = '/usr/bin/ctags'
     " }
@@ -271,7 +279,7 @@
         let g:loaded_indentconsistencycop = 1
     " }
 
-    " Misc { 
+    " Misc {
         let g:checksyntax_auto = 0
 
         "comment out line(s) in visual mode
@@ -299,7 +307,7 @@
         hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
         hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
-        " some convenient mappings 
+        " some convenient mappings
         inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
         inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
         inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
@@ -320,9 +328,18 @@
         let g:pdv_cfg_Author = "K. Gustavson"
         let g:pdv_cfg_Copyright = "Copyright (c) 2011 CellTrak Technologies, Inc. All Rights reserved."
         let g:pdv_cfg_License = "This is a CellTrak internal document. Do not duplicate or distribute."
+        "let g:pdv_cfg_folds = 0
+        "let g:pdv_cfg_CommentEnd = ""
         ""let b:match_words = b:match_words . ',{:},(:),[:]'
+        map <Leader>ff :EnableFastPHPFolds<CR>
     " }
-    
+
+    " Ruby Debug {
+        " Disable Ruby Debugger. It should be enabled only for Ruby buffers.
+        "let g:ruby_debugger_loaded = 1
+    " }
+
+    " }
     " Scratch {
         nnoremap <Leader>sc :ToggleScratch<CR>
         nnoremap <Leader>ss :Sscratch<CR>
@@ -342,7 +359,7 @@
         " For multiple marks on the same line.
         highlight ShowMarksHLm gui=bold guibg=LightGreen guifg=DarkGreen
     " }
-    
+
     " SnipMate {
         "let loaded_snips = 1 " Disable the plugin
 
@@ -360,8 +377,8 @@
     " VCSCommand {
         let b:VCSCommandMapPrefix='<Leader>v'
         "let b:VCSCommandVCSType='git'
-    " } 
-    
+    " }
+
     " VimDebugger {
         map <F8> :DbgToggleBreakpoint<CR>
         map <F7> :DbgRefreshWatch<CR>
@@ -370,7 +387,7 @@
         map <F10> :DbgStepOver<CR>:DbgRefreshWatch<CR>
         map <F11> :DbgStepInto<CR>:DbgRefreshWatch<CR>
         map <S-F11> :DbgStepOut<CR>:DbgRefreshWatch<CR>
-    " } 
+    " }
 
     " ZenCoding {
         let g:user_zen_settings = {
@@ -397,20 +414,22 @@
 " GUI Settings {
     " GVIM- (here instead of .gvimrc)
     if has('gui_running')
-        set guioptions-=T              " remove the toolbar
-        "set lines=40                   " 40 lines of text instead of 24,
+        set lines=40                      " 40 lines of text instead of 24,
         "set guifont=Droid\ Sans\ Mono\ 9
         "set guifont=Monospace\ 9
-        set guifont=Inconsolata\ 10
-        set background=light     " Assume a light background
+        set guifont=Inconsolata\ 11
+        "set background=dark                " Assume a dark background
         "color desert
+        set background=light              " Assume a light background
         colorscheme solarized
+        set guioptions-=T                  " remove the toolbar
+        set guioptions-=e                   " remove the gui tabbar
     endif
 " }
 
 " Windows Compatible {
     " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-    " across (heterogeneous) systems easier. 
+    " across (heterogeneous) systems easier.
     if has('win32') || has('win64')
         set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
     endif
