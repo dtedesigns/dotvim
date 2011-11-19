@@ -6,7 +6,7 @@
 	url = https://github.com/vim-scripts/Color-Sampler-Pack.git
 [submodule "bundle/command-t"]
 	path = bundle/command-t
-	url = http://github.com/vim-scripts/Command-T.git
+	url = https://github.com/vim-scripts/Command-T.git
 [submodule "bundle/matchit"]
 	path = bundle/matchit
 	url = http://github.com/vim-scripts/matchit.zip.git
@@ -26,7 +26,7 @@
 	url = http://github.com/tpope/vim-markdown.git
 [submodule "bundle/zencoding"]
 	path = bundle/zencoding
-	url = http://github.com/vim-scripts/ZenCoding.vim.git
+	url = git://github.com/mattn/zencoding-vim.git
 [submodule "bundle/gtags"]
 	path = bundle/gtags
 	url = https://github.com/vim-scripts/gtags.vim.git
@@ -127,3 +127,9 @@
 [submodule "bundle/vim-json"]
 	path = bundle/vim-json
 	url = https://github.com/chrismetcalf/vim-json.git
+[submodule "bundle/jslint"]
+	path = bundle/jslint
+	url = https://github.com/hallettj/jslint.vim.git
+[submodule "bundle/jiramarkup"]
+	path = bundle/jiramarkup
+	url = https://github.com/vim-scripts/confluencewiki.vim.git
