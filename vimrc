@@ -78,7 +78,7 @@
     let b:javascript_fold=1
 
     au FileType tex set makeprg=pdflatex\ %<.tex
-    au FileType php set makeprg=$HOME/bin/ctags-php.sh
+    "au FileType php set makeprg=$HOME/bin/ctags-php.sh
 
     au FileType php set omnifunc=phpcomplete#CompletePHP
     let php_sql_query=1
@@ -172,8 +172,8 @@
     nnoremap <CR> :noh<CR><CR>
 
     " Buffers and Tabs
-    map <Up> :bprev<CR>
-    map <Down> :bnext<CR>
+    map <C-Up> :bprev<CR>
+    map <C-Down> :bnext<CR>
     "map <Left> :tabprev<CR>
     "map <Right> :tabnext<CR>
 
@@ -202,6 +202,9 @@
     " Make tab key bounce between matches like '%'
     nnoremap <tab> %
     vnoremap <tab> %
+
+    nmap S  :%s//<Left>
+    vmap S  :%s//<Left>
 
     " Leader Key Mappings {
         " Firstly, define the <leader> key
@@ -323,13 +326,12 @@
     " PIV {
         let g:DisableAutoPHPFolding = 0
 
-        let g:pdv_cfg_Package = "CellTrak"
-        let g:pdv_cfg_Version = "1.74"
-        let g:pdv_cfg_Author = "K. Gustavson"
-        let g:pdv_cfg_Copyright = "Copyright (c) 2011 CellTrak Technologies, Inc. All Rights reserved."
-        let g:pdv_cfg_License = "This is a CellTrak internal document. Do not duplicate or distribute."
-        "let g:pdv_cfg_folds = 0
-        "let g:pdv_cfg_CommentEnd = ""
+        "let g:pdv_cfg_Package = "CellTrak"
+        "let g:pdv_cfg_Version = "1.74"
+        let g:pdv_cfg_Author = "K. Gustavson <kgustavson@celltrak.com>"
+        let g:pdv_cfg_Copyright = "Copyright 2011 CellTrak Technologies, Inc. All Rights reserved."
+        let g:pdv_cfg_License = "CellTrak Internal Source {@link http://www.celltrak.com/}"
+        let g:pdv_cfg_CommentEnd = ""
         ""let b:match_words = b:match_words . ',{:},(:),[:]'
         map <Leader>ff :EnableFastPHPFolds<CR>
     " }
@@ -418,12 +420,13 @@
         "set guifont=Droid\ Sans\ Mono\ 9
         "set guifont=Monospace\ 9
         set guifont=Inconsolata\ 11
-        "set background=dark                " Assume a dark background
-        "color desert
-        set background=light              " Assume a light background
-        colorscheme solarized
+        set background=dark                " Assume a dark background
+        color desert
+        "set background=light              " Assume a light background
+        "colorscheme solarized
         set guioptions-=T                  " remove the toolbar
-        set guioptions-=e                   " remove the gui tabbar
+        "set guioptions-=e                   " remove the gui tabbar
+        "set guioptions+=c                   " enable console dialogs
     endif
 " }
 
