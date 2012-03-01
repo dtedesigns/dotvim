@@ -17,6 +17,3 @@ command! Phpmd execute RunPhpmd()
 "set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"\\,%*[a-zA-Z0-9_.-]\\,%*[0-9]
 set errorformat+=%f\\:%l\\\\t%m
 
-"nmap <Leader>sn :Phpcs<CR>
-nmap <Leader>md :Phpmd<CR>
-

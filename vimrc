@@ -21,6 +21,23 @@
      "runtime! debian.vim
 " }
 
+" GUI Settings {
+    " GVIM- (here instead of .gvimrc)
+    if has('gui_running')
+        "set lines=90                      " 40 lines of text instead of 24,
+        "set guifont=Droid\ Sans\ Mono\ 9
+        "set guifont=Monospace\ 9
+        set guifont=Inconsolata\ 11
+        set background=dark                " Assume a dark background
+        color desert
+        "set background=light              " Assume a light background
+        "colorscheme solarized
+        set guioptions-=T                  " remove the toolbar
+        "set guioptions-=e                   " remove the gui tabbar
+        "set guioptions+=c                   " enable console dialogs
+    endif
+" }
+
 " General {
     filetype plugin indent on      " Automatically detect file types.
     syntax on                      " syntax highlighting
@@ -113,7 +130,6 @@
         set laststatus=2             " show statusline always
         " Use the commented line if fugitive isn't installed
         "set statusline=%<%f\ %=\:\b%n%y%m%r%w\ %l,%c%V\ %P " a statusline, also on steroids
-        set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
     endif
 
     set backspace=indent,eol,start   " backspace for dummys
@@ -134,7 +150,7 @@
     set foldenable                   " auto fold code
     set gdefault                     " the /g flag on :s substitutions by default
     set switchbuf=usetab             " when opening a buffer from the list, use existing window first
-    set colorcolumn=85               " visible wrap here/long line indicator
+    set colorcolumn=80               " visible wrap here/long line indicator
 
     " u+2294 ⊔  u+231f ⌟  u+00bb »  u+2422 ␢  u+27ab ➫  u+2022 •  u+2027 ‧
     " u+2056 ⁖
@@ -206,6 +222,8 @@
     nmap S  :%s//<Left>
     vmap S  :%s//<Left>
 
+    nnoremap ;; :s/\([^;]\)$/\1;/<CR>
+
     " Leader Key Mappings {
         " Firstly, define the <leader> key
         let mapleader = ","
@@ -238,7 +256,7 @@
 " Plugins {
 
     " AlignMaps {
-        let g:DrChipTopLvlMenu= "Plugin."
+        let g:DrChipTopLvlMenu= "&Plugin."
     " }
 
     " AutoCloseTag {
@@ -248,6 +266,21 @@
 
     " Ctags {
         set tags=./tags;/,~/.vimtags
+    " }
+
+    " CtrlP {
+        let g:ctrlp_map = '<C-p>'
+        let g:ctrlp_working_path_mode = 2
+        let g:ctrlp_clear_cache_on_exit = 0
+        "let g:ctrlp_custom_ignore = {
+            "\ 'dir' : '\.git$|\.svn$|cache$|log$|vendor$|build$',
+            "\ 'file' : '\.sw?$',
+            "\ 'link' : 'some_bad_symbolic_links',
+        "\ }
+        let g:ctrlp_extensions = [
+        \    'tag',
+        \ ]
+        let g:ctrlp_user_command = 'find %s -type f'
     " }
 
     " Delimitmate {
@@ -261,13 +294,35 @@
         "let g:dbext_default_profile_mysql_local_DBI = 'type=DBI:user=root:passwd=whatever:driver=mysql:conn_parms=database=mysql;host=localhost'
         "let g:dbext_default_profile_mysql_local_ODBC = 'type=ODBC:user=root:passwd=whatever:dsnname=mysql'
 
+        let g:dbext_default_profile_gateway = 'type=MYSQL:user=kgustavson:passwd=@askb:dbname=ct_gateway200:extra=-t'
+        let g:dbext_default_profile_site_specific = 'type=MYSQL:user=kgustavson:passwd=@askb:dbname=ct_dev200:extra=-t'
         let g:dbext_default_profile_local = 'type=MYSQL:user=kgustavson:passwd=@askb:dbname=@askb:extra=-t'
-        let g:dbext_default_profile_local_hcr = 'type=MYSQL:user=kgustavson:passwd=@askb:dbname=hcr174'
-        let g:dbext_default_profile_ctidb = 'type=MYSQL:host=ctidb.ctigps.net:user=kgustavson:passwd=@askb:dbname=@askb'
+        "let g:dbext_default_profile_ctidb = 'type=MYSQL:host=ctidb.ctigps.net:user=kgustavson:passwd=@askb:dbname=@askb'
     " }
 
     " EasyTags {
         let g:easytags_cmd = '/usr/bin/ctags'
+    " }
+
+    " fontzoom {
+        let g:fontzoom_no_default_key_mappings = 1
+        silent! nmap <unique> <silent> = <Plug>(fontzoom-larger)
+        silent! nmap <unique> <silent> - <Plug>(fontzoom-smaller)
+        silent! nmap <unique> <silent> <C-ScrollWheelUp> <Plug>(fontzoom-larger)
+        silent! nmap <unique> <silent> <C-ScrollWheelDown> <Plug>(fontzoom-smaller)
+    " }
+
+    " Fugitive {
+        if has('statusline')
+            set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+        endif
+
+        autocmd BufReadPost fugitive://* set bufhidden=delete
+
+        autocmd User fugitive
+          \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+          \   nnoremap <buffer> .. :edit %:h<CR> |
+          \ endif
     " }
 
     " Gundo {
@@ -338,10 +393,9 @@
 
     " Ruby Debug {
         " Disable Ruby Debugger. It should be enabled only for Ruby buffers.
-        "let g:ruby_debugger_loaded = 1
+        let g:ruby_debugger_loaded = 1
     " }
 
-    " }
     " Scratch {
         nnoremap <Leader>sc :ToggleScratch<CR>
         nnoremap <Leader>ss :Sscratch<CR>
@@ -391,6 +445,19 @@
         map <S-F11> :DbgStepOut<CR>:DbgRefreshWatch<CR>
     " }
 
+    " VimOrganizer {
+        au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
+        au BufEnter *.org call org#SetOrgFileType()
+
+        let g:org_tags_alist='@home(h) @celltrak(c) @dtedesigns(d) easy(e) hard(r)'
+        let g:org_todo_setup='TODO NEXT STARTED | DONE CANCEL'
+        let g:agenda_select_dirs=["~/Dropbox/Documents/VimOrg"]
+        "let g:agenda_files = split(glob("~/Dropbox/Documents/VimOrg/*.org"),"\n")
+
+        " open VimOrganizerNotes.org in a vertical window
+        nnoremap <leader>vo <C-w><C-v><C-l>:e ~/Dropbox/Documents/VimOrg/<cr>
+    " }
+
     " ZenCoding {
         let g:user_zen_settings = {
         \    'php' : {
@@ -411,23 +478,6 @@
         let loaded_tinymode_tml = 1
     " }
 
-" }
-
-" GUI Settings {
-    " GVIM- (here instead of .gvimrc)
-    if has('gui_running')
-        set lines=40                      " 40 lines of text instead of 24,
-        "set guifont=Droid\ Sans\ Mono\ 9
-        "set guifont=Monospace\ 9
-        set guifont=Inconsolata\ 11
-        set background=dark                " Assume a dark background
-        color desert
-        "set background=light              " Assume a light background
-        "colorscheme solarized
-        set guioptions-=T                  " remove the toolbar
-        "set guioptions-=e                   " remove the gui tabbar
-        "set guioptions+=c                   " enable console dialogs
-    endif
 " }
 
 " Windows Compatible {

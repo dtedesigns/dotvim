@@ -4,9 +4,6 @@
 [submodule "bundle/colorsamplerpack"]
 	path = bundle/colorsamplerpack
 	url = https://github.com/vim-scripts/Color-Sampler-Pack.git
-[submodule "bundle/command-t"]
-	path = bundle/command-t
-	url = https://github.com/vim-scripts/Command-T.git
 [submodule "bundle/matchit"]
 	path = bundle/matchit
 	url = http://github.com/vim-scripts/matchit.zip.git
@@ -93,7 +90,7 @@
 	url = https://github.com/klokane/vim-phpunit.git
 [submodule "bundle/ruby-debug"]
 	path = bundle/ruby-debug
-	url = https://github.com/astashov/vim-ruby-debugger.git
+	url = git://github.com/astashov/vim-ruby-debugger.git
 [submodule "bundle/gundo"]
 	path = bundle/gundo
 	url = https://github.com/sjl/gundo.vim.git
@@ -133,3 +130,24 @@
 [submodule "bundle/jiramarkup"]
 	path = bundle/jiramarkup
 	url = https://github.com/vim-scripts/confluencewiki.vim.git
+[submodule "bundle/VimOrganizer"]
+	path = bundle/VimOrganizer
+	url = https://github.com/hsitz/VimOrganizer.git
+[submodule "bundle/NarrowRegion"]
+	path = bundle/NarrowRegion
+	url = https://github.com/chrisbra/NrrwRgn.git
+[submodule "bundle/UniversalTextLinking"]
+	path = bundle/UniversalTextLinking
+	url = https://github.com/vim-scripts/utl.vim.git
+[submodule "bundle/vim-fontzoom"]
+	path = bundle/vim-fontzoom
+	url = git://github.com/thinca/vim-fontzoom.git
+[submodule "bundle/gnupg"]
+	path = bundle/gnupg
+	url = git://gitorious.org/vim-gnupg/vim-gnupg.git
+[submodule "bundle/ctrlp"]
+	path = bundle/ctrlp
+	url = git://github.com/kien/ctrlp.vim.git
+[submodule "bundle/pman"]
+	path = bundle/pman
+	url = git://github.com/berkes/vim-pman.git

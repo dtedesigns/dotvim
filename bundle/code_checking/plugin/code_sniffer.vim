@@ -14,5 +14,3 @@ command! Phpcs execute RunPhpcs()
 
 set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"\\,%*[a-zA-Z0-9_.-]\\,%*[0-9]
 
-nmap <Leader>sn :Phpcs<CR>
-
