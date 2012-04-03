@@ -85,9 +85,6 @@
 	path = bundle/textile
 	url = https://github.com/timcharper/textile.vim.git
 	ignore = dirty
-[submodule "bundle/phpunit/plugin"]
-	path = bundle/phpunit/plugin
-	url = https://github.com/klokane/vim-phpunit.git
 [submodule "bundle/ruby-debug"]
 	path = bundle/ruby-debug
 	url = git://github.com/astashov/vim-ruby-debugger.git
@@ -151,3 +148,6 @@
 [submodule "bundle/pman"]
 	path = bundle/pman
 	url = git://github.com/berkes/vim-pman.git
+[submodule "bundle/sqlutilities"]
+	path = bundle/sqlutilities
+	url = git://github.com/vim-scripts/SQLUtilities.git

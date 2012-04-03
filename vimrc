@@ -27,7 +27,7 @@
         "set lines=90                      " 40 lines of text instead of 24,
         "set guifont=Droid\ Sans\ Mono\ 9
         "set guifont=Monospace\ 9
-        set guifont=Inconsolata\ 11
+        set guifont=Inconsolata\ 12
         set background=dark                " Assume a dark background
         color desert
         "set background=light              " Assume a light background
@@ -35,6 +35,7 @@
         set guioptions-=T                  " remove the toolbar
         "set guioptions-=e                   " remove the gui tabbar
         "set guioptions+=c                   " enable console dialogs
+        highlight Pmenu guibg=brown gui=bold
     endif
 " }
 
@@ -165,7 +166,7 @@
     set shiftwidth=4                 " use indents of 4 spaces
     set expandtab                    " tabs are tabs, not spaces
     set tabstop=4                    " an indentation every four columns
-    "set matchpairs+=<:>             " match, to be used with %
+    set matchpairs+=<:>              " match, to be used with %
     set pastetoggle=<F12>            " pastetoggle (sane indentation on pastes)
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     "set foldmethod=syntax
@@ -271,16 +272,26 @@
     " CtrlP {
         let g:ctrlp_map = '<C-p>'
         let g:ctrlp_working_path_mode = 2
-        let g:ctrlp_clear_cache_on_exit = 0
+        let g:ctrlp_clear_cache_on_exit = 1
+        let g:ctrlp_max_files = 100000
+        let g:ctrlp_max_depth = 40
+
+        let g:ctrlp_user_command = {
+            \ 'types': {
+                \ 1: ['.git/', 'cd %s && git ls-files'],
+                \ },
+            \ 'fallback': 'find %s -type f'
+        \ }
+
         "let g:ctrlp_custom_ignore = {
-            "\ 'dir' : '\.git$|\.svn$|cache$|log$|vendor$|build$',
-            "\ 'file' : '\.sw?$',
-            "\ 'link' : 'some_bad_symbolic_links',
-        "\ }
+          "\ 'dir':  '\.git$\|\.svn$\|cache$\|log$\|vendor$\|build$',
+          "\ 'file': '\.sw?$\|\.exe$\|\.so$\|\.dll$',
+          "\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+          "\ }
+
         let g:ctrlp_extensions = [
         \    'tag',
         \ ]
-        let g:ctrlp_user_command = 'find %s -type f'
     " }
 
     " Delimitmate {
@@ -313,6 +324,8 @@
     " }
 
     " Fugitive {
+        "let g:fugitive_git_executable = 'myGit'
+
         if has('statusline')
             set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
         endif
@@ -335,6 +348,11 @@
     " IndentConsistencyCop {
         " Disable IndentConsistencyCop
         let g:loaded_indentconsistencycop = 1
+    " }
+
+    " JumpToCSS {
+        nnoremap <Leader>jc :JumpToCSS<CR>
+        "let g:jumptocss_autoclose = 1
     " }
 
     " Misc {
@@ -425,6 +443,13 @@
         nnoremap ,smr <esc>:exec ReloadAllSnippets()<cr>
     " }
 
+    " SQLUtilities {
+        let g:sqlutil_align_comma = 1
+        let g:sqlutil_align_first_word = 1
+        let g:sqlutil_align_keyword_right = 1
+        let g:sqlutil_keyword_case = '\U'
+    " }
+
     " Supertab {
         let g:SuperTabDefaultCompletionType = "context"
         let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
@@ -443,6 +468,8 @@
         map <F10> :DbgStepOver<CR>:DbgRefreshWatch<CR>
         map <F11> :DbgStepInto<CR>:DbgRefreshWatch<CR>
         map <S-F11> :DbgStepOut<CR>:DbgRefreshWatch<CR>
+
+        let g:debuggerMaxDepth = 3
     " }
 
     " VimOrganizer {
