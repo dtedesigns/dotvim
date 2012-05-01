@@ -28,10 +28,10 @@
         "set guifont=Droid\ Sans\ Mono\ 9
         "set guifont=Monospace\ 9
         set guifont=Inconsolata\ 12
-        set background=dark                " Assume a dark background
-        color desert
-        "set background=light              " Assume a light background
-        "colorscheme solarized
+        "set background=dark                " Assume a dark background
+        "color desert
+        set background=light              " Assume a light background
+        colorscheme solarized
         set guioptions-=T                  " remove the toolbar
         "set guioptions-=e                   " remove the gui tabbar
         "set guioptions+=c                   " enable console dialogs
@@ -43,15 +43,17 @@
     filetype plugin indent on      " Automatically detect file types.
     syntax on                      " syntax highlighting
     set mouse=a                    " automatically enable mouse usage
-    "set autochdir                 " always switch to the current file directory..
-    " not every vim is compiled with this, use the following line instead
-    "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
     scriptencoding utf-8
     set autowrite
     set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
     " set spell                     " spell checking on
     set hidden                      " Turn on hidden mode
     set undofile                    " Turn on undofile functionality
+
+    "set autochdir                 " always switch to the current file directory..
+    " KG: this is not desirable behavior for large project development
+    " not every vim is compiled with this, use the following line instead
+    "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
     " Save on focus lost
     "au FocusLost * :wa
@@ -68,8 +70,8 @@
         silent execute '!mkdir -p $HOME/.vimswap'
         silent execute '!mkdir -p $HOME/.vimviews'
         silent execute '!mkdir -p $HOME/.vimundo'
-        au BufWinLeave * silent! mkview  "make vim save view (state) (folds, cursor, etc)
-        au BufWinEnter * silent! loadview "make vim load view (state) (folds, cursor, etc)
+        "au BufWinLeave * silent! mkview  "make vim save view (state) (folds, cursor, etc)
+        "au BufWinEnter * silent! loadview "make vim load view (state) (folds, cursor, etc)
     " }
 " }
 
@@ -152,6 +154,7 @@
     set gdefault                     " the /g flag on :s substitutions by default
     set switchbuf=usetab             " when opening a buffer from the list, use existing window first
     set colorcolumn=80               " visible wrap here/long line indicator
+    hi ColorColumn ctermbg=darkgray guibg=darkgray " Change the ColorColumn to lightgray
 
     " u+2294 ⊔  u+231f ⌟  u+00bb »  u+2422 ␢  u+27ab ➫  u+2022 •  u+2027 ‧
     " u+2056 ⁖
@@ -170,6 +173,11 @@
     set pastetoggle=<F12>            " pastetoggle (sane indentation on pastes)
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     "set foldmethod=syntax
+" }
+
+" FileTypes {
+    au BufNewFile,BufRead *.less  setf css
+    "au BufNewFile,BufRead *.twig  setf htmljinja
 " }
 
 " Key Mappings {
