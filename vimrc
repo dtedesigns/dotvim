@@ -316,6 +316,7 @@
         let g:dbext_default_profile_gateway = 'type=MYSQL:user=kgustavson:passwd=@askb:dbname=ct_gateway200:extra=-t'
         let g:dbext_default_profile_site_specific = 'type=MYSQL:user=kgustavson:passwd=@askb:dbname=ct_dev200:extra=-t'
         let g:dbext_default_profile_local = 'type=MYSQL:user=kgustavson:passwd=@askb:dbname=@askb:extra=-t'
+        let g:dbext_default_profile_devapp = 'type=MYSQL:host=devapp.ns.us.ctidata.net:user=kgustavson:passwd=@askb:dbname=@askb'
         "let g:dbext_default_profile_ctidb = 'type=MYSQL:host=ctidb.ctigps.net:user=kgustavson:passwd=@askb:dbname=@askb'
     " }
 

@@ -121,9 +121,6 @@
 [submodule "bundle/vim-json"]
 	path = bundle/vim-json
 	url = https://github.com/chrismetcalf/vim-json.git
-[submodule "bundle/jslint"]
-	path = bundle/jslint
-	url = https://github.com/hallettj/jslint.vim.git
 [submodule "bundle/jiramarkup"]
 	path = bundle/jiramarkup
 	url = https://github.com/vim-scripts/confluencewiki.vim.git
@@ -151,3 +148,9 @@
 [submodule "bundle/sqlutilities"]
 	path = bundle/sqlutilities
 	url = git://github.com/vim-scripts/SQLUtilities.git
+[submodule "bundle/coffeescript"]
+	path = bundle/coffeescript
+	url = git://github.com/kchmck/vim-coffee-script.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = git://github.com/scrooloose/syntastic.git
