@@ -1,3 +1,12 @@
+<hr>
+
+# Please Note :octocat:
+
+This is for my older, Pathogen-based Vim configuration files.  For my newer configuration go to [kgust / dotVim](https://github.com/kgust/dotVim).
+
+<hr>
+
+
 # dotVim Configuration Files
 
 
